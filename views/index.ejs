@@ -5,6 +5,7 @@
     <title>Log In</title>
 </head>
 <body>
+    <%- include('header') %>
     <% if (locals.user) {%>
         <h1>Logged in as: <%= user.username %></h1>
         <a href="/log-out">Log Out</a>
