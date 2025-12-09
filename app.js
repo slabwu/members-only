@@ -9,6 +9,8 @@ const pool = require('./db/pool')
 const indexRoute = require('./routes/index')
 const signUpRoute = require('./routes/sign-up')
 const logInRoute = require('./routes/log-in')
+const postsRoute = require('./routes/posts')
+const memberRoute = require('./routes/membership')
 
 const app = express()
 app.set('views', path.join(__dirname, 'views'))
@@ -27,6 +29,8 @@ app.use((req, res, next) => {
 app.use('/', indexRoute)
 app.use('/sign-up', signUpRoute)
 app.use('/log-in', logInRoute)
+app.use('/posts', postsRoute)
+app.use('/membership', memberRoute)
 
 app.listen(8080, (error) => {
     if (error) {
