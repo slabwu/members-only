@@ -1,5 +1,8 @@
+const db = require('../db/queries')
+
 exports.getPosts = async (req, res) => {
-    res.render('posts')
+    const posts = await db.getPosts()
+    res.render('posts', { posts: posts })
 }
 
 exports.getNewPost = async (req, res) => {

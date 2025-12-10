@@ -4,5 +4,19 @@
 <body>
     <%- include('header') %>
     <p>Posts</p>
+    <% posts.forEach(post => { %>
+        <% time = post.timestamp.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true }) %>
+        <% date = post.timestamp.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) %>
+        <div class="post">
+            <div>@<%= post.username %></div>
+            <div><%= post.first_name %></div>
+            <div><%= post.last_name %></div>
+            <div><%= post.member ? "Member" : "Guest" %></div>
+            <div><%= post.title %></div>
+            <div><%= time %>, <%= date %></div>
+            <div><%= post.text %></div>
+            <div><%= post.author_id %></div>
+        </div>
+    <% }) %>
 </body>
 </html>

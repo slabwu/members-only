@@ -10,7 +10,7 @@ exports.getLogIn = async (req, res) => {
 
 exports.postLogIn = async (req, res) => {
     passport.authenticate('local', {
-        successRedirect: '/',
+        successRedirect: '/posts',
         failureRedirect: '/log-in',
         failureFlash: true
     })(req, res)

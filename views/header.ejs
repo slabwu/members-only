@@ -3,9 +3,9 @@
         <h1>The Lounge</h1>
     </a>
     <a href="/posts">Posts</a>
-    <a href="/posts/new">New post</a>
-    <a href="/membership">Membership</a>
     <% if (locals.user) {%>
+        <a href="/posts/new">New post</a>
+        <a href="/membership">Membership</a>
         <a href="/log-out">Log Out</a>
     <% } else { %>
         <a href="/log-in">Log In</a>
