@@ -9,6 +9,7 @@
         <input id="username" name="username" placeholder="username" type="text" />
         <label for="password">Password</label>
         <input id="password" name="password" type="password" />
+        <div class="error"><%= error && error.length ? error[0] : "" %></div>
         <button>Log In</button>
     </form>
     <a href="/">Back</a>

@@ -5,9 +5,6 @@ const { argv } = require('node:process')
 
 const url = argv[2] || process.env.DATABASE_URL
 
-// TRUNCATE TABLE users RESTART IDENTITY;
-// TRUNCATE TABLE posts RESTART IDENTITY;
-
 const SQL = `
 CREATE TABLE IF NOT EXISTS users (
     id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,

@@ -6,19 +6,24 @@
     <h1>Sign Up</h1>
     <form action="/sign-up" method="POST">
         <label for="first">First Name</label>
-        <input name="first" type="text" />
+        <input name="first" type="text" value="<%= fields.first || "" %>"/>
+        <div class="error"><%= errors.first ? errors.first.msg : "" %></div>
 
         <label for="last">Last Name</label>
-        <input name="last" type="text" />
+        <input name="last" type="text" value="<%= fields.last || "" %>"/>
+        <div class="error"><%= errors.last ? errors.last.msg : "" %></div>
 
         <label for="username">Username</label>
-        <input name="username" type="text" />
+        <input name="username" type="text" value="<%= fields.username || "" %>"/>
+        <div class="error"><%= errors.username ? errors.username.msg : "" %></div>
 
         <label for="password">Password</label>
-        <input name="password" type="password" />
+        <input name="password" type="password" value="<%= fields.password || "" %>"/>
+        <div class="error"><%= errors.password ? errors.password.msg : "" %></div>
 
         <label for="confirm">Confirm Password</label>
-        <input name="confirm" type="password" />
+        <input name="confirm" type="password" value="<%= fields.confirm || "" %>"/>
+        <div class="error"><%= errors.confirm ? errors.confirm.msg : "" %></div>
 
         <button>Sign Up</button>
     </form>

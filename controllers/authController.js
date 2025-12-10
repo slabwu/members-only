@@ -1,35 +1,38 @@
 const passport = require('passport')
 const bcrypt = require('bcryptjs')
-const pool = require('../db/pool')
 const db = require('../db/queries')
+const validateUser = require('../config/validator')
+const { validationResult, matchedData } = require("express-validator")
 
 exports.getLogIn = async (req, res) => {
-    res.render('log-in')
+    res.render('log-in', { error: req.flash('error') })
 }
 
 exports.postLogIn = async (req, res) => {
     passport.authenticate('local', {
         successRedirect: '/',
-        failureRedirect: '/'
+        failureRedirect: '/log-in',
+        failureFlash: true
     })(req, res)
 }
 
 exports.getSignUp = async (req, res) => {
-    res.render('sign-up')
+    res.render('sign-up', { errors: {}, fields: {} })
 }
 
-exports.postSignUp = async (req, res, next) => {
-    try {
-        const hashedPassword = await bcrypt.hash(req.body.password, 10)
-        console.log(req.body)
-        // await pool.query('INSERT INTO users (username, password) VALUES ($1, $2)', [req.body.username, hashedPassword])
-        // await db.postUser(req.body)
-        res.redirect('/')
-    } catch (error) {
-        console.error(error)
-        next(error)
+const signUp = async (req, res) => {
+    const errors = validationResult(req)
+    let fields = matchedData(req, { onlyValidData: false })
+
+    if (!errors.isEmpty()) {
+        return res.status(400).render('sign-up', { errors: errors.mapped(), fields: fields })
     }
+    
+    fields.password = await bcrypt.hash(fields.password, 10)
+    await db.addUser(fields)
+    res.redirect('/log-in')
 }
+exports.postSignUp = [ validateUser, signUp ]
 
 exports.logOut = async (req, res, next) => {
     req.logout((err) => {
