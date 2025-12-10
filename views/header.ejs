@@ -1,8 +1,10 @@
 <head>
-    <h1>The Lounge</h1>
+    <a href="/">
+        <h1>The Lounge</h1>
+    </a>
     <a href="/posts">Posts</a>
-     <a href="/posts/new">New post</a>
-      <a href="/membership">Membership</a>
+    <a href="/posts/new">New post</a>
+    <a href="/membership">Membership</a>
     <% if (locals.user) {%>
         <a href="/log-out">Log Out</a>
     <% } else { %>
