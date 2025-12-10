@@ -5,10 +5,21 @@
     <%- include('header') %>
     <h1>Sign Up</h1>
     <form action="/sign-up" method="POST">
+        <label for="first">First Name</label>
+        <input name="first" type="text" />
+
+        <label for="last">Last Name</label>
+        <input name="last" type="text" />
+
         <label for="username">Username</label>
-        <input id="username" name="username" placeholder="username" type="text" />
+        <input name="username" type="text" />
+
         <label for="password">Password</label>
-        <input id="password" name="password" type="password" />
+        <input name="password" type="password" />
+
+        <label for="confirm">Confirm Password</label>
+        <input name="confirm" type="password" />
+
         <button>Sign Up</button>
     </form>
     <a href="/">Back</a>

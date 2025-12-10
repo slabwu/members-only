@@ -1,6 +1,7 @@
 const passport = require('passport')
 const bcrypt = require('bcryptjs')
 const pool = require('../db/pool')
+const db = require('../db/queries')
 
 exports.getLogIn = async (req, res) => {
     res.render('log-in')
@@ -20,7 +21,9 @@ exports.getSignUp = async (req, res) => {
 exports.postSignUp = async (req, res, next) => {
     try {
         const hashedPassword = await bcrypt.hash(req.body.password, 10)
-        await pool.query('INSERT INTO users (username, password) VALUES ($1, $2)', [req.body.username, hashedPassword])
+        console.log(req.body)
+        // await pool.query('INSERT INTO users (username, password) VALUES ($1, $2)', [req.body.username, hashedPassword])
+        // await db.postUser(req.body)
         res.redirect('/')
     } catch (error) {
         console.error(error)

@@ -5,9 +5,9 @@ exports.getUser = async (id) => {
     return rows
 }
 
-exports.postUser = async (user) => {
+exports.addUser = async ({ username, password, first, last }) => {
     await pool.query('INSERT INTO users (username, password, first_name, last_name, member, admin) VALUES ($1,$2,$3,$4,$5,$6)', 
-        [user.username, user.password, user.first, user.last, user.member, user.admin]
+        [username, password, first, last, false, false]
     )
 }
 
@@ -16,8 +16,8 @@ exports.getPosts = async () => {
     return rows
 }
 
-exports.postPost = async () => {
+exports.addPost = async ({ title, text, author_id }) => {
     await pool.query('INSERT INTO posts (title, text, author_id) VALUES ($1,$2,$3)', 
-        [user.title, user.text, user.author_id]
+        [title, text, author_id]
     )
 }
