@@ -14,7 +14,7 @@
             <div><%= post.title %></div>
             <div><%= time %>, <%= date %></div>
             <div><%= post.text %></div>
-            <div><%= post.author_id %></div>
+            <div style="background-color: <%= post.color %>"><%= post.username.includes('User-') ? '*' : post.username[0] %></div>
             <% if (locals.user && ( user.admin || user.id === post.author_id)) { %>
                 <a href="/posts/<%= post.id %>/edit">Edit</a>
                 <form action="/posts/<%= post.id %>/delete" method="POST">
