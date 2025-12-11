@@ -18,10 +18,15 @@
             <% if (locals.user && ( user.admin || user.id === post.author_id)) { %>
                 <a href="/posts/<%= post.id %>/edit">Edit</a>
                 <form action="/posts/<%= post.id %>/delete" method="POST">
-                    <button>Delete</button>
+                    <button onclick="check(event)">Delete</button>
                 </form>
             <% } %>
         </div>
     <% }) %>
 </body>
+<script>
+    let check = (e) => {
+        if (!confirm('Are you sure you want to delete this post?')) e.preventDefault()
+    }
+</script>
 </html>
