@@ -40,3 +40,11 @@ exports.logOut = async (req, res, next) => {
         res.redirect('/')
     })
 }
+
+exports.isAuth = async (req, res, next) => {
+    if (req.isAuthenticated()) {
+        next()
+    } else {
+        res.redirect('/log-in')
+    }
+}
