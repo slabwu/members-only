@@ -30,7 +30,7 @@ const signUp = async (req, res) => {
     
     fields.password = await bcrypt.hash(fields.password, 10)
     await db.addUser(fields)
-    res.redirect('/log-in')
+    this.postLogIn(req, res)
 }
 exports.postSignUp = [ validate.user, signUp ]
 
