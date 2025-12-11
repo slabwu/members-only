@@ -8,6 +8,7 @@ exports.getPosts = async (req, res) => {
     
     if (!req.user || !req.user.member) {
         posts.forEach(post => {
+            if (req.user && req.user.id === post.author_id) return
             post.name = 'Anonymous'
             post.username = mask(post.username)
         })
@@ -33,3 +34,26 @@ const newPost = async (req, res) => {
     res.redirect('/posts')
 }
 exports.postNewPost = [ validate.post, newPost ]
+
+exports.getEditPost = async (req, res) => {
+    let fields = await db.getPost(req.params.postId)
+    res.render('edit-post', { errors: {}, fields: fields, postId: req.params.postId }) 
+}
+
+const editPost = async (req, res) => {
+    const errors = validationResult(req)
+    let fields = matchedData(req, { onlyValidData: false })
+
+    if (!errors.isEmpty()) {
+        return res.status(400).render('edit-post', { errors: errors.mapped(), fields: fields, postId: req.params.postId })
+    }
+    
+    fields.id = req.params.postId
+    await db.editPost(fields)
+    res.redirect('/posts')
+}
+exports.postEditPost = [ validate.post, editPost ]
+
+exports.deletePost = async (req, res) => {
+    res.render('edit-post', { errors: {}, fields: {} })
+}

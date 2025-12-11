@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('head') %>
+<body>
+    <%- include('header') %>
+    <p>Edit post</p>
+    <form action="/posts/<%= postId %>/edit" method="POST">
+        <label for="title">Title</label>
+        <input name="title" type="text" value="<%= fields.title || "" %>"/>
+         <div class="error"><%= errors.title ? errors.title.msg : "" %></div>
+
+        <label for="text">Text</label>
+        <textarea name="text" rows="5" cols="30"><%= fields.text || "" %></textarea>
+         <div class="error"><%= errors.text ? errors.text.msg : "" %></div>
+        
+        <button>Update</button>
+    </form>
+    <a href="/">Back</a>
+</body>
+</html>
