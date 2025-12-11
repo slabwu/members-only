@@ -1,8 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-<<%- include('head') %>
+<%- include('head') %>
 <body>
     <%- include('header') %>
     <p>Membership</p>
+    <form action="/membership" method="POST">
+        <div>Please complete this CAPTCHA:</div>
+        <label for="answer"> 4 + 6 / ( 3 - 1 )</label>
+        <input name="answer" type="number">
+        <div class="error"><%= error && error.length ? error[0] : "" %></div>
+        <button>Get membership</button>
+    </form>
 </body>
 </html>

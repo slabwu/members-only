@@ -1,7 +1,20 @@
+const db = require('../db/queries')
+require('dotenv').config()
+
 exports.getMembership = async (req, res) => {
-    res.render('membership')
+    res.render('membership', { error: req.flash('error') })
 }
 
 exports.postMembership = async (req, res) => {
-    res.render('membership')
+    switch(req.body.answer) {
+        case process.env.MEMBER:
+            await db.grantMember(req.user.id)
+            res.redirect('/posts')
+        case process.env.ADMIN:
+            await db.grantAdmin(req.user.id)
+            res.redirect('/posts')
+        default:
+            req.flash('error', 'Incorrect!')
+            res.redirect('/membership')
+    }
 }

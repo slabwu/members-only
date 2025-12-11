@@ -11,6 +11,14 @@ exports.addUser = async ({ username, password, first, last }) => {
     )
 }
 
+exports.grantMember = async (id) => {
+    await pool.query('UPDATE users SET member = true WHERE id = $1', [id])
+}
+
+exports.grantAdmin = async (id) => {
+    await pool.query('UPDATE users SET admin = true WHERE id = $1', [id])
+}
+
 exports.getPosts = async () => {
     const { rows } = await pool.query("SELECT p.title, p.timestamp, p.text, u.username, u.first_name || ' ' || u.last_name AS name, u.member FROM posts p JOIN users u ON p.author_id = u.id")
     return rows

@@ -4,7 +4,7 @@ exports.getPosts = async (req, res) => {
     const posts = (await db.getPosts())
     const mask = (string) => '*'.repeat(string.length)
     
-    if (!req.user || !req.member) {
+    if (!req.user || !req.user.member) {
         posts.forEach(post => {
             post.name = 'Anonymous'
             post.username = mask(post.username)
