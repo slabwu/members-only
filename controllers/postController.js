@@ -1,16 +1,16 @@
 const db = require('../db/queries')
 const validate = require('../config/validator')
 const { validationResult, matchedData } = require("express-validator")
+const { hash } = require('../config/helper')
 
 exports.getPosts = async (req, res) => {
     const posts = (await db.getPosts())
-    const mask = (string) => '*'.repeat(string.length)
     
     if (!req.user || !req.user.member) {
         posts.forEach(post => {
             if (req.user && req.user.id === post.author_id) return
             post.name = 'Anonymous'
-            post.username = mask(post.username)
+            post.username = 'User-' + hash(post.username)
         })
     }
 
