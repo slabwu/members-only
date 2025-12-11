@@ -1,6 +1,6 @@
 const { body } = require("express-validator")
 
-const validateUser = [
+const user = [
     body('first').trim()
         .notEmpty().withMessage('Required.')
         .isAlpha().withMessage('Must only contain letters.')
@@ -20,4 +20,14 @@ const validateUser = [
         .custom((value, { req }) => value === req.body.password).withMessage('Passwords do not match.')
 ]
 
-module.exports = validateUser
+const post = [
+    body('title').trim()
+        .notEmpty().withMessage('Title is required.'),
+    body('text').trim()
+        .notEmpty().withMessage('Text is required.')
+]
+
+module.exports = {
+    user,
+    post
+}

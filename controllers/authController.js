@@ -1,7 +1,7 @@
 const passport = require('passport')
 const bcrypt = require('bcryptjs')
 const db = require('../db/queries')
-const validateUser = require('../config/validator')
+const validate = require('../config/validator')
 const { validationResult, matchedData } = require("express-validator")
 
 exports.getLogIn = async (req, res) => {
@@ -32,7 +32,7 @@ const signUp = async (req, res) => {
     await db.addUser(fields)
     res.redirect('/log-in')
 }
-exports.postSignUp = [ validateUser, signUp ]
+exports.postSignUp = [ validate.user, signUp ]
 
 exports.logOut = async (req, res, next) => {
     req.logout((err) => {
