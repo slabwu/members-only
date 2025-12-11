@@ -55,5 +55,6 @@ const editPost = async (req, res) => {
 exports.postEditPost = [ validate.post, editPost ]
 
 exports.deletePost = async (req, res) => {
-    res.render('edit-post', { errors: {}, fields: {} })
+    await db.deletePost(req.params.postId)
+    res.redirect('/posts')
 }

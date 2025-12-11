@@ -42,5 +42,5 @@ exports.editPost = async ({ id, title, text }) => {
 }
 
 exports.deletePost = async (id) => {
-    await pool.query('DELETE FROM posts WHERE id = $3', [id])
+    await pool.query('DELETE FROM posts WHERE id = $1', [id])
 }
