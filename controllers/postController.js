@@ -6,10 +6,13 @@ const { hash, getColor } = require('../config/helper')
 exports.getPosts = async (req, res) => {
     const posts = await db.getPosts()
     
+    posts.forEach(post => {
+        post.color = getColor(post.username)
+    })
+
     if (!req.user || !req.user.member) {
         posts.forEach(post => {
-            post.color = getColor(post.username)
-            if (req.user && req.user.id === post.author_id) return
+            if (req.user && req.user.id !== post.author_id) return
             post.name = 'Anonymous'
             post.username = 'User-' + hash(post.username)
         })

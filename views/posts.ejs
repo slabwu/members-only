@@ -3,26 +3,41 @@
 <%- include('head') %>
 <body>
     <%- include('header') %>
-    <p>Posts</p>
-    <% posts.forEach(post => { %>
-        <% time = post.timestamp.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true }) %>
-        <% date = post.timestamp.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) %>
-        <div class="post">
-            <div><%= post.name %></div>
-            <div>@<%= post.username %></div>
-            <div><%= post.member ? "Member" : "Guest" %></div>
-            <div><%= post.title %></div>
-            <div><%= time %>, <%= date %></div>
-            <div><%= post.text %></div>
-            <div style="background-color: <%= post.color %>"><%= post.username.includes('User-') ? '*' : post.username[0] %></div>
-            <% if (locals.user && ( user.admin || user.id === post.author_id)) { %>
-                <a href="/posts/<%= post.id %>/edit">Edit</a>
-                <form action="/posts/<%= post.id %>/delete" method="POST">
-                    <button onclick="check(event)">Delete</button>
-                </form>
-            <% } %>
-        </div>
-    <% }) %>
+    <main>
+        <h2>Posts</h2>
+        <section class="postSection">
+            <% posts.forEach(post => { %>
+                <% time = post.timestamp.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true }) %>
+                <% date = post.timestamp.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) %>
+                <div class="post">
+                    <div class="profileSection">
+                        <div class="name"><%= post.name %></div>
+                        <div class="username">@<%= post.username %></div>
+                        <div style="background-color: <%= post.color %>" class="profile"><%= post.username.includes('User-') ? '✻' : post.username[0].toUpperCase() %></div>
+                        <div class="status"><%= post.admin ? "Admin" : post.member ? "Member" : "Guest" %></div>
+                    </div>
+                    <div class="messageSection">
+                        <div class="postTitle"><%= post.title %></div>
+                        <div class="timestamp"><%= time %>, <%= date %></div>
+                        <div class="postText"><%= post.text %></div>
+
+                        <% if (locals.user && ( user.admin || user.id === post.author_id)) { %>
+                            <div class="adminButtons">
+                                <a href="/posts/<%= post.id %>/edit" class="button">
+                                    <span class="material-icons">edit</span>
+                                </a>
+                                <form action="/posts/<%= post.id %>/delete" method="POST">
+                                    <button onclick="check(event)" class="button delete">
+                                        <span class="material-icons">close</span>
+                                    </button>
+                                </form>
+                            </div>
+                        <% } %>
+                    </div>
+                </div>
+            <% }) %>
+        </section>
+    </main>
 </body>
 <script>
     let check = (e) => {

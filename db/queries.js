@@ -20,12 +20,12 @@ exports.grantAdmin = async (id) => {
 }
 
 exports.getPosts = async () => {
-    const { rows } = await pool.query("SELECT p.id, p.title, p.timestamp, p.text, p.author_id, u.username, u.first_name || ' ' || u.last_name AS name, u.member FROM posts p JOIN users u ON p.author_id = u.id")
+    const { rows } = await pool.query("SELECT *, u.first_name || ' ' || u.last_name AS name FROM posts p JOIN users u ON p.author_id = u.id")
     return rows
 }
 
 exports.getPost = async (id) => {
-    const { rows } = await pool.query("SELECT p.id, p.title, p.timestamp, p.text, p.author_id, u.username, u.first_name || ' ' || u.last_name AS name, u.member FROM posts p JOIN users u ON p.author_id = u.id WHERE p.id = $1", [id])
+    const { rows } = await pool.query("SELECT *, u.first_name || ' ' || u.last_name AS name FROM posts p JOIN users u ON p.author_id = u.id WHERE p.id = $1", [id])
     return rows[0]
 }
 
