@@ -3,7 +3,6 @@ const bcrypt = require('bcryptjs')
 const db = require('../db/queries')
 const validate = require('../config/validator')
 const { validationResult, matchedData } = require("express-validator")
-const { getColor } = require('../config/helper')
 
 exports.getLogIn = async (req, res) => {
     res.render('log-in', { error: req.flash('error') })
