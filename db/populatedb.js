@@ -25,12 +25,6 @@ CREATE TABLE IF NOT EXISTS posts (
     author_id INTEGER,
     FOREIGN KEY (author_id) REFERENCES users(id) ON DELETE SET NULL
 );
-
-INSERT INTO users (username, password, first_name, last_name, member, admin) 
-VALUES ('test', 'test', 'John', 'Doe', true, false);
-
-INSERT INTO posts (title, text, author_id) 
-VALUES ('Hello world!', 'Hi everyone!', 1);
 `
 
 async function main() {
