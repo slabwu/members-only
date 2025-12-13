@@ -19,7 +19,7 @@
                     <div class="messageSection">
                         <div class="postTitle"><%= post.title %></div>
                         <div class="timestamp"><%= time %>, <%= date %></div>
-                        <div class="postText"><%= post.text %></div>
+                        <p class="postText"><%= post.text %></p>
 
                         <% if (locals.user && ( user.admin || user.id === post.author_id)) { %>
                             <div class="adminButtons">
