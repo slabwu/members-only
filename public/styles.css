@@ -205,7 +205,7 @@ form {
     box-shadow: 0px 4px 10px rgb(0, 0, 0, 0.3);
 }
 
-form button, form .button {
+form button, form .button, .button {
     font-size: 16px;
     border: none;
     color: var(--text);
@@ -354,7 +354,7 @@ input::-webkit-inner-spin-button {
 
 /* Profile */
 
-.profileInformation {
+.container {
     border-radius: 20px;
     background-color: var(--tertiary);
     box-shadow: 0px 4px 10px rgb(0, 0, 0, 0.3);
@@ -367,4 +367,66 @@ input::-webkit-inner-spin-button {
 .profileInformation h3 {
     font-size: 16px;
     margin: 24px 0 6px;
+}
+
+
+
+
+
+/* Home */
+
+.home p {
+    font-size: 20px;
+    width: 490px;
+    text-align: center;
+    line-height: 150%;
+    margin: 0 0 40px;
+}
+
+.home .buttonContainer {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.home .buttonContainer .button {
+    margin: 0;
+}
+
+.lounge {
+    font-size: 250px;
+    user-select: none;
+    animation-name: float;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+button.secondary, .button.secondary {
+    background-color: var(--secondary);
+}
+
+button:hover, .button:hover, .button.secondary:hover {
+    cursor: pointer;
+    transform: scale(1.06);
+    color: var(--primary);
+    background-color: var(--text);
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.home .container {
+    width: 500px;
+    padding: 40px 30px 40px;
+    margin-top: -20px;
 }

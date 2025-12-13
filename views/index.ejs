@@ -3,15 +3,22 @@
 <%- include('head') %>
 <body>
     <%- include('header') %>
-    <main>
-        <% if (locals.user) {%>
-            <h1>Logged in as: <%= user.username %></h1>
-            <a href="/log-out">Log Out</a>
-        <% } else { %>
-            <h1>Welcome</h1>
-            <a href="/log-in">Log In</a>
-            <a href="sign-up">Sign Up</a>
-        <%}%>
+    <main class="home">
+        <h2>Welcome to the lounge!</h2>
+        <div class="lounge">🛋️</div>
+
+        <section class="container">
+            <p>We are a forum of members joined together to discuss anything and everything. Take a seat and say hi!</p>
+            <div class="buttonContainer">
+                <% if (locals.user) {%>
+                    <a href="/membership" class="button">Become a Member</a>
+                    <a href="/posts" class="button secondary">See Posts</a>
+                <% } else { %>
+                    <a href="/sign-up" class="button">Sign Up</a>
+                    <a href="/log-in" class="button secondary">Log In</a>
+                <%}%>
+            </div>
+        </section>
     </main>
 </body>
 </html>
