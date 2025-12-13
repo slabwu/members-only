@@ -5,6 +5,7 @@ const isAuth = authController.isAuth
 const profile = Router()
 
 profile.get('/', isAuth, profileController.getProfile)
-profile.post('/', isAuth, profileController.getProfile)
+profile.get('/edit', isAuth, profileController.getEditProfile)
+profile.post('/edit', isAuth, profileController.postEditProfile)
 
 module.exports = profile

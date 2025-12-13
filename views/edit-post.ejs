@@ -4,7 +4,7 @@
 <body>
     <%- include('header') %>
     <main>
-        <p>Edit post</p>
+        <h2>Edit post</h2>
         <form action="/posts/<%= postId %>/edit" method="POST">
             <label for="title">Title</label>
             <input name="title" type="text" value="<%= fields.title || "" %>"/>

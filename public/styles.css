@@ -405,6 +405,10 @@ input::-webkit-inner-spin-button {
     margin: 24px 0 6px;
 }
 
+.profileInformation .button {
+    margin-top: 30px;
+}
+
 
 
 
@@ -489,3 +493,9 @@ button:hover, .button:hover, .button.secondary:hover {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--secondary);
 }
+
+
+
+
+
+/* Profile */

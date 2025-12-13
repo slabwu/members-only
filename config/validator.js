@@ -13,7 +13,8 @@ const user = [
     body('username').trim()
         .notEmpty().withMessage('Username is required.')
         .isLength({ max: 30 }).withMessage('Username must be under 30 characters.')
-        .custom( async value => {
+        .custom( async (value, { req }) => {
+            if (req.user && value === req.user.username) return true
             if (await db.usernameTaken(value)) throw new Error()
             return true
         }).withMessage('Username is already taken.'),
@@ -25,6 +26,25 @@ const user = [
         .custom((value, { req }) => value === req.body.password).withMessage('Passwords do not match.')
 ]
 
+const editUser = [
+    body('first').trim()
+        .notEmpty().withMessage('Required.')
+        .isAlpha().withMessage('Letters only.')
+        .isLength({ max: 30 }).withMessage('Must be under 30 characters.'),
+    body('last').trim()
+        .notEmpty().withMessage('Required.')
+        .isAlpha().withMessage('Letters only.')
+        .isLength({ max: 30 }).withMessage('Must be under 30 characters.'),
+    body('username').trim()
+        .notEmpty().withMessage('Username is required.')
+        .isLength({ max: 30 }).withMessage('Username must be under 30 characters.')
+        .custom( async (value, { req }) => {
+            if (req.user && value === req.user.username) return true
+            if (await db.usernameTaken(value)) throw new Error()
+            return true
+        }).withMessage('Username is already taken.')
+]
+
 const post = [
     body('title').trim()
         .notEmpty().withMessage('Title is required.'),
@@ -34,5 +54,6 @@ const post = [
 
 module.exports = {
     user,
+    editUser,
     post
 }

@@ -6,13 +6,16 @@
     <main>
         <h2>Profile</h2>
         <div style="background-color: <%= user.color %>" class="profile"><%= user.username[0] %></div>
-        <section class="container">
+        <section class="container profileInformation">
             <h3>Name</h3>
             <div><%= user.first_name %> <%= user.last_name %></div>
             <h3>Username</h3>
             <div><%= user.username %></div>
             <h3>Status</h3>
             <div><%= user.admin ? "Admin" : user.member ? "Member" : "Guest" %></div>
+            <div class="buttonContainer">
+                <a href="/profile/edit" class="button">Edit</a>
+            </div>
         </section>
     </main>
 </body>

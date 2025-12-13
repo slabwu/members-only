@@ -37,7 +37,6 @@ exports.postNewPost = [ validate.post, newPost ]
 
 exports.getEditPost = async (req, res) => {
     let fields = await db.getPost(req.params.postId)
-    console.log(req.params.postId)
     res.render('edit-post', { errors: {}, fields: fields, postId: req.params.postId }) 
 }
 

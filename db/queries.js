@@ -12,6 +12,12 @@ exports.addUser = async ({ username, password, first, last }) => {
     )
 }
 
+exports.editUser = async ({ id, username, first, last }) => {
+    await pool.query('UPDATE users SET username = $1, first_name = $2, last_name = $3, color = $4 WHERE id = $5', 
+        [username, first, last, getColor(username), id]
+    )
+}
+
 exports.usernameTaken = async (username) => {
     const { rows } = await pool.query('SELECT * FROM users WHERE username = $1', [username])
     return rows.length > 0

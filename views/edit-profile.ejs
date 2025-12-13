@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('head') %>
+<body>
+    <%- include('header') %>
+    <main>
+        <h2>Edit profile</h2>
+        <form action="/profile/edit" method="POST">
+            <div class="nameInput">
+                <div>
+                    <label for="first">First name</label>
+                    <input name="first" type="text" placeholder="First name" value="<%= locals.fields ? fields.first : user.first_name %>"/>
+                    <div class="error"><%= errors.first ? errors.first.msg : "" %></div>
+                </div>
+                <div>
+                    <label for="last">Last name</label>
+                    <input name="last" type="text" placeholder="Last name" value="<%= locals.fields ? fields.last : user.last_name %>"/>
+                     <div class="error"><%= errors.last ? errors.last.msg : "" %></div>
+                </div>
+            </div>
+            <label for="username">Username</label>
+            <input name="username" type="text" placeholder="Username" value="<%= locals.fields ? fields.username : user.username %>"/>
+            <div class="error"><%= errors.username ? errors.username.msg : "" %></div>
+        
+            <div class="buttonContainer">
+                <button>Update</button>
+                <a href="/profile" class="button">Cancel</a>
+            </div>
+        </form>
+    </main>
+</body>
+</html>
