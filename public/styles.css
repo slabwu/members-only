@@ -20,7 +20,7 @@ main {
     gap: 10px;
 }
 
-div, a, p, form label, h1, h2 {
+div, a, p, form label, h1, h2, h3 {
     color: var(--text);
     text-decoration: none;
 }
@@ -346,4 +346,25 @@ input::-webkit-inner-spin-button {
 
 .dropdown:hover .dropdown-content {
     display: block;
+}
+
+
+
+
+
+/* Profile */
+
+.profileInformation {
+    border-radius: 20px;
+    background-color: var(--tertiary);
+    box-shadow: 0px 4px 10px rgb(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 4px 30px 30px;
+    width: 200px;
+    margin-top: 20px;
+}
+
+.profileInformation h3 {
+    font-size: 16px;
+    margin: 24px 0 6px;
 }

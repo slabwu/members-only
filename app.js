@@ -12,6 +12,7 @@ const signUpRoute = require('./routes/sign-up')
 const logInRoute = require('./routes/log-in')
 const postsRoute = require('./routes/posts')
 const memberRoute = require('./routes/membership')
+const profileRoute = require('./routes/profile')
 
 
 const app = express()
@@ -35,6 +36,7 @@ app.use('/sign-up', signUpRoute)
 app.use('/log-in', logInRoute)
 app.use('/posts', postsRoute)
 app.use('/membership', memberRoute)
+app.use('/profile', profileRoute)
 
 app.listen(8080, (error) => {
     if (error) {

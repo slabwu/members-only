@@ -13,7 +13,7 @@
                     <div class="profileSection">
                         <div class="name"><%= post.name %></div>
                         <div class="username">@<%= post.username %></div>
-                        <div style="background-color: <%= post.color %>" class="profile"><%= post.username.includes('User-') ? '✻' : post.username[0].toUpperCase() %></div>
+                        <div style="background-color: <%= post.color %>" class="profile"><%= post.username.includes('User-') ? '✻' : post.username[0] %></div>
                         <div class="status"><%= post.admin ? "Admin" : post.member ? "Member" : "Guest" %></div>
                     </div>
                     <div class="messageSection">
