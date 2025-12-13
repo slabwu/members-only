@@ -6,12 +6,18 @@
     <main>
         <h2>Sign Up</h2>
         <form action="/sign-up" method="POST" autocomplete="off">
-            <label for="first">First Name</label>
-            <input name="first" type="text" placeholder="First" value="<%= fields.first || "" %>"/>
-            <div class="error"><%= errors.first ? errors.first.msg : "" %></div>
-            <label for="last">Last Name</label>
-            <input name="last" type="text" placeholder="Last" value="<%= fields.last || "" %>"/>
-            <div class="error"><%= errors.last ? errors.last.msg : "" %></div>
+            <div class="nameInput">
+                <div>
+                    <label for="first">First name</label>
+                    <input name="first" type="text" placeholder="First name" value="<%= fields.first || "" %>"/>
+                    <div class="error"><%= errors.first ? errors.first.msg : "" %></div>
+                </div>
+                <div>
+                    <label for="last">Last name</label>
+                    <input name="last" type="text" placeholder="Last name" value="<%= fields.last || "" %>"/>
+                     <div class="error"><%= errors.last ? errors.last.msg : "" %></div>
+                </div>
+            </div>
             <label for="username">Username</label>
             <input name="username" type="text" placeholder="Username" value="<%= fields.username || "" %>"/>
             <div class="error"><%= errors.username ? errors.username.msg : "" %></div>

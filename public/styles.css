@@ -308,6 +308,18 @@ input:focus, textarea:focus {
     transform: scale(1.06);
 }
 
+.nameInput {
+    display: flex;
+    width: 100%;
+    gap: 20px;
+}
+
+.nameInput div input {
+    flex: 1;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 8px 0 8px;
+}
 
 
 
