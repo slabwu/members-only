@@ -4,14 +4,15 @@
 <body>
     <%- include('header') %>
     <main>
+        <% let errorExists = error && error.length %>
         <h2>Log In</h2>
         <form action="/log-in" method="POST" autocomplete="off">
             <label for="username">Username</label>
             <input id="username" name="username" placeholder="Username" type="text" />
-            <div class="error"><%= error && error.length ? error[0] : "" %></div>
+            <div class="error"><%= errorExists && error[0] !== 'Incorrect password' ? error[0] : "" %></div>
             <label for="password">Password</label>
             <input id="password" name="password" placeholder="Password" type="password" />
-            <div class="error"><%= error && error.length ? error[0] : "" %></div>
+            <div class="error"><%= errorExists && error[0] !== 'Incorrect username' ? error[0] : "" %></div>
             <button>Log In</button>
         </form>
         <p>Don't have an account? <a href="/sign-up" class="authLink">Sign Up</a></p>
