@@ -21,7 +21,7 @@ exports.grantAdmin = async (id) => {
 }
 
 exports.getPosts = async () => {
-    const { rows } = await pool.query("SELECT *, u.first_name || ' ' || u.last_name AS name FROM posts p JOIN users u ON p.author_id = u.id")
+    const { rows } = await pool.query("SELECT *, u.first_name || ' ' || u.last_name AS name FROM posts p JOIN users u ON p.author_id = u.id ORDER BY p.id DESC")
     return rows
 }
 
