@@ -82,7 +82,7 @@ header .profile:hover {
     display: flex;
     flex-direction: column;
     gap: 40px;
-    width: 80%;
+    width: min(80%, 1200px);
 }
 
 .post {
@@ -415,9 +415,15 @@ input::-webkit-inner-spin-button {
 
 /* Home */
 
+.home .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .home p {
     font-size: 20px;
-    width: 490px;
+    width: min(490px, 80vw);
     text-align: center;
     line-height: 150%;
     margin: 0 0 40px;
@@ -436,6 +442,7 @@ input::-webkit-inner-spin-button {
 .lounge {
     font-size: 250px;
     user-select: none;
+    margin: -20px 0 -60px;
     animation-name: float;
     animation-duration: 3s;
     animation-iteration-count: infinite;
@@ -468,7 +475,6 @@ button:hover, .button:hover, .button.secondary:hover {
 .home .container {
     width: 500px;
     padding: 40px 30px 40px;
-    margin-top: -20px;
 }
 
 
@@ -498,4 +504,85 @@ button:hover, .button:hover, .button.secondary:hover {
 
 
 
-/* Profile */
+/* Responsiveness */
+
+@media (max-width: 700px) {
+    .adminButtons, .status {
+        display: none;
+    }
+
+    h1 {
+        font-size: 16px;
+    }
+
+    .postSection {
+        width: 100%;
+    }
+
+    .post {
+        flex-direction: column;
+    }
+
+    .profileSection {
+        border-radius: 20px 20px 0 0;
+        width: 100%;
+        box-sizing: border-box;
+        flex-direction: row;
+        align-items: center;
+        gap: 20px;
+        padding: 20px 30px 20px;
+    }
+
+    .messageSection {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .postTitle {
+        width: 100%;
+    }
+
+    .profile {
+        width: 50px;
+        height: 50px;
+        font-size: 30px;
+    }
+
+    .post .username {
+        margin-bottom: 0;
+        flex: 1;
+        text-align: left;
+    }
+}
+
+@media (max-width: 620px) {
+    .home .container {
+        width: 300px;
+    }
+
+    .home .container p {
+        width: 270px;
+    }
+}
+
+@media (max-width: 500px) {
+    .name {
+        display: none;
+    }
+
+    nav a {
+        font-size: 14px;
+    }
+
+    .post .username {
+        font-size: 20px;
+        color: var(--text);
+        font-weight: bold;
+    }
+}
+
+@media (max-width: 370px) {
+    h1 {
+        display: none;
+    }
+}

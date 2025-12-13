@@ -7,10 +7,10 @@
         <h2>Edit post</h2>
         <form action="/posts/<%= postId %>/edit" method="POST">
             <label for="title">Title</label>
-            <input name="title" type="text" value="<%= fields.title || "" %>"/>
+            <input name="title" type="text" placeholder="Post title" value="<%= fields.title || "" %>"/>
              <div class="error"><%= errors.title ? errors.title.msg : "" %></div>
             <label for="text">Text</label>
-            <textarea name="text" rows="5" cols="30"><%= fields.text || "" %></textarea>
+            <textarea name="text" placeholder="Start writing here" rows="5" cols="30"><%= fields.text || "" %></textarea>
              <div class="error"><%= errors.text ? errors.text.msg : "" %></div>
         
             <div class="buttonContainer">
