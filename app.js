@@ -24,10 +24,14 @@ app.use(express.urlencoded({ extended: false }))
 
 initialisePassport(pool)
 app.use(session({ 
-    store: new PgSession({ pool: pool }),
+    store: new PgSession({ 
+        pool: pool,
+        createTableIfMissing: true
+    }),
     secret: process.env.SECRET, 
-    resave: false, 
-    saveUninitialized: false 
+    resave: false,
+    saveUninitialized: false,
+    cookie: { maxAge: 30 * 24 * 60 * 60 * 1000 }
 }))
 app.use(passport.initialize())
 app.use(passport.session())
