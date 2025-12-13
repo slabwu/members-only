@@ -21,6 +21,7 @@ app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
 app.use(express.urlencoded({ extended: false }))
 
+console.log('SESSION SECRET:', process.env.SECRET)
 initialisePassport(pool)
 app.use(session({ secret: process.env.SECRET, resave: false, saveUninitialized: false }))
 app.use(passport.initialize())
