@@ -5,14 +5,10 @@ const { hash, getColor } = require('../config/helper')
 
 exports.getPosts = async (req, res) => {
     const posts = await db.getPosts()
-    
-    posts.forEach(post => {
-        post.color = getColor(post.username)
-    })
 
     if (!req.user || !req.user.member) {
         posts.forEach(post => {
-            if (req.user && req.user.id !== post.author_id) return
+            if (req.user && req.user.id === post.author_id) return
             post.name = 'Anonymous'
             post.username = 'User-' + hash(post.username)
         })
@@ -41,6 +37,7 @@ exports.postNewPost = [ validate.post, newPost ]
 
 exports.getEditPost = async (req, res) => {
     let fields = await db.getPost(req.params.postId)
+    console.log(req.params.postId)
     res.render('edit-post', { errors: {}, fields: fields, postId: req.params.postId }) 
 }
 

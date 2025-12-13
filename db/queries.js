@@ -1,4 +1,5 @@
 const pool = require('./pool')
+const { getColor } = require('../config/helper')
 
 exports.getUser = async (id) => {
     const { rows } = await pool.query('SELECT * FROM users WHERE id = $1', [id])
@@ -6,8 +7,8 @@ exports.getUser = async (id) => {
 }
 
 exports.addUser = async ({ username, password, first, last }) => {
-    await pool.query('INSERT INTO users (username, password, first_name, last_name, member, admin) VALUES ($1,$2,$3,$4,$5,$6)', 
-        [username, password, first, last, false, false]
+    await pool.query('INSERT INTO users (username, password, first_name, last_name, member, admin, color) VALUES ($1,$2,$3,$4,$5,$6,$7)', 
+        [username, password, first, last, false, false, getColor(username)]
     )
 }
 

@@ -13,7 +13,8 @@ CREATE TABLE IF NOT EXISTS users (
     first_name VARCHAR ( 30 ),
     last_name VARCHAR ( 30 ),
     member BOOLEAN,
-    admin BOOLEAN
+    admin BOOLEAN,
+    color VARCHAR ( 7 )
 );
 
 CREATE TABLE IF NOT EXISTS posts (
