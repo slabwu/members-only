@@ -6,7 +6,7 @@
     <main>
         <h2>Membership</h2>
         <form action="/membership" method="POST" class="membership">
-            <div>Please complete this CAPTCHA:</div>
+            <div>Please answer this question:</div>
             <label for="answer"> 4 + 6 / ( 3 - 1 ) =</label>
             <input name="answer" type="number">
             <div class="error"><%= error && error.length ? error[0] : "" %></div>
