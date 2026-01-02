@@ -7,6 +7,7 @@
         <h2>Posts</h2>
         <section class="postSection">
             <% posts.forEach(post => { %>
+                <% console.log(post) %>
                 <% time = post.timestamp.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true }) %>
                 <% date = post.timestamp.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) %>
                 <div class="post">

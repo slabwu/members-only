@@ -32,12 +32,12 @@ exports.grantAdmin = async (id) => {
 }
 
 exports.getPosts = async () => {
-    const { rows } = await pool.query("SELECT *, u.first_name || ' ' || u.last_name AS name FROM posts p JOIN users u ON p.author_id = u.id ORDER BY p.id DESC")
+    const { rows } = await pool.query("SELECT *, p.id AS id, u.id AS user_id, u.first_name || ' ' || u.last_name AS name FROM posts p JOIN users u ON p.author_id = u.id ORDER BY p.id DESC")
     return rows
 }
 
 exports.getPost = async (id) => {
-    const { rows } = await pool.query("SELECT *, u.first_name || ' ' || u.last_name AS name FROM posts p JOIN users u ON p.author_id = u.id WHERE p.id = $1", [id])
+    const { rows } = await pool.query("SELECT *, p.id AS id, u.id AS user_id, u.first_name || ' ' || u.last_name AS name FROM posts p JOIN users u ON p.author_id = u.id WHERE p.id = $1", [id])
     return rows[0]
 }
 
