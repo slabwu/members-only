@@ -11,11 +11,33 @@
             <input id="username" name="username" placeholder="Username" type="text" />
             <div class="error"><%= errorExists && error[0] !== 'Incorrect password' ? error[0] : "" %></div>
             <label for="password">Password</label>
-            <input id="password" name="password" placeholder="Password" type="password" />
+            <div class="passwordContainer">
+                <input name="password" type="password" placeholder="Password" id="password" />
+                <button type="button" data-toggle="password" class="togglePassword">
+                    <span id="passwordIcon" class="material-icons">visibility</span>
+                </button>
+            </div>
             <div class="error"><%= errorExists && error[0] !== 'Incorrect username' ? error[0] : "" %></div>
             <button>Log In</button>
         </form>
         <p>Don't have an account? <a href="/sign-up" class="authLink">Sign Up</a></p>
     </main>
+
+    <script>
+        const $ = (id) => document.getElementById(id)
+
+        document.addEventListener('click', (e) => {
+            const toggleId = e.target.dataset.toggle
+
+            if (toggleId) {
+                const type = $(toggleId).getAttribute('type') === 'password' ? 'text' : 'password'
+                $(toggleId).setAttribute('type', type)
+
+                const icon = $(toggleId + 'Icon').innerHTML === 'visibility' ? 'visibility_off' : 'visibility'
+                $(toggleId + 'Icon').innerHTML = icon
+            }
+        })
+
+    </script>
 </body>
 </html>
