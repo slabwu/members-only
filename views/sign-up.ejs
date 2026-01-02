@@ -18,18 +18,49 @@
                      <div class="error"><%= errors.last ? errors.last.msg : "" %></div>
                 </div>
             </div>
+
             <label for="username">Username</label>
             <input name="username" type="text" placeholder="Username" value="<%= fields.username || "" %>"/>
             <div class="error"><%= errors.username ? errors.username.msg : "" %></div>
+            
             <label for="password">Password</label>
-            <input name="password" type="password" placeholder="Password" value="<%= fields.password || "" %>"/>
+            <div class="passwordContainer">
+                <input name="password" type="password" placeholder="Password" id="password" value="<%= fields.password || "" %>"/>
+                <button type="button" data-toggle="password" class="togglePassword">
+                    <span id="passwordIcon" class="material-icons">visibility</span>
+                </button>
+            </div>
             <div class="error"><%= errors.password ? errors.password.msg : "" %></div>
+            
             <label for="confirm">Confirm Password</label>
-            <input name="confirm" type="password" placeholder="Confirm your password" value="<%= fields.confirm || "" %>"/>
+            <div class="passwordContainer">
+                <input name="confirm" type="password" placeholder="Confirm your password" id="confirm" value="<%= fields.confirm || "" %>"/>
+                <button type="button" data-toggle="confirm" class="togglePassword">
+                    <span id="confirmIcon" class="material-icons">visibility</span>
+                </button>
+            </div>
             <div class="error"><%= errors.confirm ? errors.confirm.msg : "" %></div>
+            
             <button>Sign Up</button>
         </form>
         <p>Have an account already? <a href="/log-in" class="authLink">Log In</a></p>
     </main>
+
+    <script>
+        const $ = (id) => document.getElementById(id)
+
+        document.addEventListener('click', (e) => {
+            const toggleId = e.target.dataset.toggle
+
+            if (toggleId) {
+                const type = $(toggleId).getAttribute('type') === 'password' ? 'text' : 'password'
+                $(toggleId).setAttribute('type', type)
+
+                const icon = $(toggleId + 'Icon').innerHTML === 'visibility' ? 'visibility_off' : 'visibility'
+                $(toggleId + 'Icon').innerHTML = icon
+            }
+        })
+
+    </script>
 </body>
 </html>

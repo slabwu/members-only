@@ -287,6 +287,38 @@ input:focus, textarea:focus {
     color: var(--textSecondary);
 }
 
+.passwordContainer {
+    position: relative;
+}
+
+.passwordContainer input {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+button.togglePassword {
+    position: absolute;
+    background-color: transparent;
+    color: var(--textSecondary);
+    padding: 0;
+    height: 30px;
+    width: 30px;
+    box-shadow: none;
+    z-index: 2;
+    right: 10px;
+    top: 5px;
+}
+
+button.togglePassword span {
+    pointer-events: none;
+}
+
+button.togglePassword:hover {
+    transform: none;
+    background-color: transparent;
+    color: var(--textSecondary);
+}
+
 .error {
     height: 20px;
     color: rgb(255, 101, 101);
